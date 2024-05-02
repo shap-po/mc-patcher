@@ -6,7 +6,7 @@ It's recommended to use the [Prism Launcher](https://prismlauncher.org/download/
 
 # Config example
 
-```json
+```jsonc
 {
     "patches": [
         {
