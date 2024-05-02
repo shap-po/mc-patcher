@@ -1,0 +1,15 @@
+# editor files
+.vscode/*
+.idea/*
+
+# python cache
+__pycache__/*
+*.pyc
+
+# virtualenv
+.venv/*
+venv/*
+
+# configs
+configs/config.json*
+configs/data/*

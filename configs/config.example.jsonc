@@ -1,0 +1,36 @@
+{
+    "patches": [
+        {
+            "patch": {
+                // can be a list of files with different methods
+                "file": "options.txt", // from the root of the instance
+                "with": "data/options.txt", // from the configs folder
+                "method": "insert" // overwrite | insert | symlink | merge
+            },
+            "if": {
+                "file": "options.txt",
+                "exists": false
+            }
+            // reads as: if options.txt does not exist in the instance, get it from the configs folder
+        },
+        {
+            "patch": {
+                "file": "config/ias.json",
+                "with": "data/ias.json",
+                "method": "symlink"
+            },
+            "if": [
+                // must match all conditions, if we want to match any, we can use "or" inside the object with the same structure
+                {
+                    "file": "config/ias.json",
+                    "exists": false
+                },
+                {
+                    "file": ["mods/InGameAccountSwitcher*.jar", "mods/In-Game Account Switcher*.jar"], // match any variant of the mod file
+                    "exists": true
+                }
+            ]
+            // reads as: if ias.json does not exist in the game config folder and in-game account switcher mod is installed, symlink ias.json from the configs folder
+        }
+    ]
+}
